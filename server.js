@@ -12,7 +12,7 @@ const express = require("express");
 const app = express();
 // import mongoose
 const mongoose = require("mongoose");
-// import middlware
+// import middleware
 const cors = require("cors");
 const morgan = require("morgan");
 
