@@ -1,6 +1,6 @@
-///////////////////////////////
+//__________________________________
 // DEPENDENCIES
-////////////////////////////////
+//__________________________________
 // get .env variables
 require("dotenv").config();
 // pull PORT from .env, give default value of 3000
@@ -16,9 +16,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 
-///////////////////////////////
+//__________________________________
 // DATABASE CONNECTION
-////////////////////////////////
+//__________________________________
 // Establish Connection
 mongoose.connect(MONGODB_URL, {
   useUnifiedTopology: true,
@@ -30,9 +30,9 @@ mongoose.connection
   .on("close", () => console.log("Your are disconnected from mongo"))
   .on("error", (error) => console.log(error));
 
-///////////////////////////////
+//__________________________________
 // MODELS
-////////////////////////////////
+//__________________________________
 const CheeseSchema = new mongoose.Schema({
     name: String,
     countryOfOrigin: String,
@@ -41,16 +41,16 @@ const CheeseSchema = new mongoose.Schema({
 
 const Cheese = mongoose.model("Cheese", CheeseSchema);
 
-///////////////////////////////
+//__________________________________
 // MiddleWare
-////////////////////////////////
+//__________________________________
 app.use(cors()); // to prevent cors errors, open access to all origins
 app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
 
-///////////////////////////////
+//__________________________________
 // ROUTES
-////////////////////////////////
+//__________________________________
 // create a test route
 app.get("/", (req, res) => {
   res.send("hello world");
@@ -102,7 +102,7 @@ app.delete("/cheese/:id", async (req, res) => {
   }
 });
 
-///////////////////////////////
+//__________________________________
 // LISTENER
-////////////////////////////////
+//__________________________________
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
