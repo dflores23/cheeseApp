@@ -24,6 +24,7 @@ mongoose.connect(MONGODB_URL, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
+
 // Connection Events
 mongoose.connection
   .on("open", () => console.log("Your are connected to mongo"))
@@ -91,7 +92,7 @@ app.put("/cheese/:id", async (req, res) => {
   }
 });
 
-// PEOPLE CREATE ROUTE
+// PEOPLE DELETE ROUTE
 app.delete("/cheese/:id", async (req, res) => {
   try {
     // send all people
